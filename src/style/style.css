@@ -137,6 +137,49 @@ body {
   grid-area: 7 / 2 / 7 / 3;
 }
 
+.word-div--content {
+  display: flex;
+  flex-direction: column;
+}
+.word-div--head {
+  display: inline-flex;
+  padding: 20px 15px;
+  font-size: 28px;
+  font-weight: bold;
+  align-items: center;
+}
+
+.word-div--word {
+  width: fit-content;
+}
+.word-div--speech {
+  padding-left: 20px;
+}
+
+/* .word-div--definition {
+  padding-left: 15px;
+}*/
+.word-div--body {
+  display: inline-flex;
+  padding: 0px 15px 0px 15px;
+  font-size: 16px;
+  align-items: center;
+}
+
+.word-div--arrow {
+  height: 80%;
+  padding-left: 2vw;
+}
+.word-div--label {
+  font-weight: bold;
+}
+.word-div--footer {
+  display: inline-flex;
+  padding: 25px 25px 20px 15px;
+  font-size: 14px;
+  align-items: flex-start;
+}
+
 .div6 {
   background-color: rgb(53, 170, 121);
   grid-area: 4 / 1 / 5 / 4;
