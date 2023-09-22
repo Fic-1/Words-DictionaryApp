@@ -3,7 +3,7 @@ import icon from 'url:../../img/arrow-32.png';
 class RenderWord {
   _data;
   _parentElement = document.querySelector('.word-div');
-  _clearElement = document.querySelector('.cards');
+  _activeWord = document.querySelector('.word-active');
   _errorMessage = 'Something went wrong 😥';
   _imgElement = this._parentElement.closest('.word-div--arrow-img');
 
@@ -15,17 +15,19 @@ class RenderWord {
         return this._generateMarkupForWords(word, i);
       })
       .join('');
-    console.log(markup);
     if (!(data.length <= 4)) return;
     this._clear();
     this._parentElement.insertAdjacentHTML('beforeend', markup);
+    this._parentElement
+      .querySelectorAll('.word-div--element')
+      .forEach(el => el.classList.remove('word-div--hidden'));
   }
 
   renderError(message = this._errorMessage) {
     const markup = `<div class="error">
             <p>${message}</p>
           </div>`;
-    this._parentElement.insertAdjacentHTML('afterbegin', markup);
+    this._activeWord.insertAdjacentHTML('afterbegin', markup);
   }
 
   renderSpinner(data) {
@@ -38,7 +40,7 @@ class RenderWord {
     <div class="dot"></div>
   </section>`;
     this._clear();
-    this._parentElement.insertAdjacentHTML('afterbegin', markup);
+    this._parentElement.insertAdjacentHTML('beforeend', markup);
   }
 
   joinArrays(array) {
@@ -82,7 +84,7 @@ class RenderWord {
   _generateMarkupForWords(word, i) {
     // arrowImg.src = './src/img/arrow-32.png';
     return `
-      <div class="word-div${i + 1}">
+      <div class="word-div--element word-div--hidden">
         <div class="word-div--content">
           <div class="word-div--head">
             <div class="word-div--word">${word.word}</div>
