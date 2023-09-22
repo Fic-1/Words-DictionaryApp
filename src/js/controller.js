@@ -20,17 +20,18 @@ const renderWords = async function (query) {
     console.log(model.state);
     wordView.render(model.state.words);
   } catch (error) {
-    wordView.renderError('🤨 Unknown word');
+    // wordView.renderError('🤨 Unknown word');
+    searchView.shakeDiv();
     throw new Error(`🤨 Unknown word (${error})`);
   }
 };
 
 const controlResult = function () {
-  wordView.renderSpinner();
+  wordView.renderSpinner(model.state.words);
   const query = searchView.getQuery();
   if (!query) return;
   renderWords(query);
-  wordDiv1.classList.toggle('word-div--hidden');
+  wordDiv1.classList.remove('word-div--hidden');
   console.log(query);
 };
 const init = function () {
