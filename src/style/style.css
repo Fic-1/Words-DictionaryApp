@@ -22,7 +22,7 @@ body {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#fdfdfe",endColorstr="#00d4ff",GradientType=1);
 }
 .container {
-  padding: 0rem 3rem 0rem 3rem;
+  padding: 0rem 10rem 0rem 10rem;
 }
 
 .layout {
@@ -130,13 +130,84 @@ body {
 }
 
 .word-active {
-  width: 100%;
+  width: 80%;
   background-color: rgb(241, 243, 250);
   border-radius: 20px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   transition: transform 1s, opacity 1s;
   grid-area: 3 / 2 / 8 / 4;
   margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+.word-active--head {
+  background-color: #b3d4fc;
+  flex: 10;
+  font-size: 42px;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  padding-bottom: 20px;
+  width: 40%;
+}
+.word-active--title {
+  flex: 5;
+  font-weight: bold;
+}
+.word-active--phonetic {
+  flex: 10;
+  font-size: 24px;
+  padding-left: 10px;
+  font-style: italic;
+}
+.word-active--part {
+  flex: 20;
+  font-size: 28px;
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+}
+.word-active--part span {
+  font-style: underline;
+}
+
+.word-active--synonyms {
+  flex-direction: row;
+  font-size: 22px;
+  padding: 20px 0px 10px 0px;
+}
+.word-active--synonyms .word-active--description {
+  padding-top: 0px;
+  padding-left: 5px;
+  font-size: 22px;
+}
+.word-active--body {
+  background-color: #6fadfa;
+  flex: 60;
+  font-size: 20px;
+  display: flex;
+  flex-direction: column;
+}
+.word-active--description {
+  flex: 50;
+  font-size: 20px;
+  padding-top: 20px;
+}
+.word-active--footer {
+  background-color: #275996;
+  flex: 10;
+  font-size: 20px;
+  display: flex;
+  flex-direction: column;
+}
+.word-active--source {
+  flex: 50;
+  font-size: 20px;
+  display: flex;
+  flex-direction: row;
+  width: 75%;
+  align-items: center;
 }
 
 .word-div--content {
@@ -156,6 +227,8 @@ body {
 }
 .word-div--speech {
   padding-left: 20px;
+  font-style: italic;
+  font-size: 22px;
 }
 
 /* .word-div--definition {
