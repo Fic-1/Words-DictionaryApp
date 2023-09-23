@@ -142,8 +142,12 @@ body {
   padding: 20px;
 }
 .word-active--head {
-  background-color: #b3d4fc;
-  flex: 10;
+  display: flex;
+  flex-direction: row;
+}
+.word-active--title {
+  /* background-color: #b3d4fc; */
+  flex: 30;
   font-size: 42px;
   display: flex;
   flex-direction: column;
@@ -151,7 +155,16 @@ body {
   padding-bottom: 20px;
   width: 40%;
 }
-.word-active--title {
+.word-active--sound {
+  /* background-color: #848586; */
+  flex: 70;
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+.word-active--word {
   flex: 5;
   font-weight: bold;
 }
@@ -183,7 +196,7 @@ body {
   font-size: 22px;
 }
 .word-active--body {
-  background-color: #6fadfa;
+  /* background-color: #6fadfa; */
   flex: 60;
   font-size: 20px;
   display: flex;
@@ -195,7 +208,7 @@ body {
   padding-top: 20px;
 }
 .word-active--footer {
-  background-color: #275996;
+  /* background-color: #bac0c7; */
   flex: 10;
   font-size: 20px;
   display: flex;
