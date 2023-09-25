@@ -45,8 +45,18 @@ body {
   box-shadow: 6px 6px 12px #c5c5c5, -6px -6px 12px rgba(255, 255, 255, 0);
 }
 .div2 {
+  display: flex;
   grid-area: 1 / 2 / 2 / 3;
-  opacity: 0.3;
+  align-items: center;
+  justify-content: center;
+}
+.logo {
+  background-image: url('../img/logo_transparent.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  scale: 1;
+  height: 10vh;
+  width: 10vw;
 }
 
 .navigation {
