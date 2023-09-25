@@ -12,7 +12,7 @@ class RenderWord {
     const markup = this._data
       .reverse()
       .map((word, i) => {
-        return this._generateMarkupForWords(word, i);
+        return this._generateMarkup(word, i);
       })
       .join('');
     if (!(data.length <= 4)) return;
@@ -53,7 +53,7 @@ class RenderWord {
 
   update(data) {
     this._data = data;
-    const newMarkup = this._generateMarkupForWords();
+    const newMarkup = this._generateMarkup();
 
     const newDOM = document.createRange().createContextualFragment(newMarkup);
     const newElements = Array.from(newDOM.querySelectorAll('*'));
@@ -81,74 +81,53 @@ class RenderWord {
     });
   }
 
-  _generateMarkupForWords(word, i) {
+  _generateMarkup(word, i) {
     // arrowImg.src = './src/img/arrow-32.png';
     return `
-      <div class="word-div--element word-div--hidden">
-        <div class="word-div--content">
-          <div class="word-div--head">
-            <div class="word-div--word">${word.word}</div>
-            <div class="word-div--speech">${
-              word.phonetic ? word.phonetic : ''
-            }</div>
+      <a href="#${word.ID}"><div class="word-div--element zoom">
+      <div class="word-div--content">
+        <div class="word-div--head">
+          <div class="word-div--word">${word.word}</div>
+          <div class="word-div--speech">${
+            word.phonetic ? word.phonetic : ''
+          }</div>
+        </div>
+        <div class="word-div--body">
+          <div class="word-div--definition">
+          ${word.definitions[0].definitions[0].definition}
           </div>
-          <div class="word-div--body">
-            <div class="word-div--definition">
-            ${word.definitions[0].definitions[0].definition}
-            </div>
-            <div class="word-div--arrow">
-              <span><img src='${icon}'/></span>
-            </div>
+          <div class="word-div--arrow">
+            <span
+              ><img class="arrow" src="${icon}"
+            /></span>
           </div>
-          <div class="word-div--footer">
-            <div class="word-div--label">Synonyms:</div>
-            <div class="word-div--synonims"> 
-            ${
-              !this.joinArrays(word.definitions)
-                ? 'Sorry, no synonyms'
-                : this.joinArrays(word.definitions)
-            }
-            </div>
+        </div>
+        <div class="word-div--footer">
+          <div class="word-div--label">Synonims:</div>
+          <div class="word-div--synonims">
+          ${
+            !this.joinArrays(word.definitions)
+              ? 'Sorry, no synonyms'
+              : this.joinArrays(word.definitions)
+          }
           </div>
         </div>
       </div>
-        `;
-  }
-
-  _generateMarkup(word, i) {
-    const arrowImg = document.querySelector('.word-div--arrow-img');
-    console.log(this._imgElement);
-    // arrowImg.src = './src/img/arrow-32.png';
-    return `
-        <div class="word-div--content">
-          <div class="word-div--head">
-            <div class="word-div--word">${this._data[0].word}</div>
-            <div class="word-div--speech">${
-              this._data[0].phonetic ? this._data[0].phonetic : ''
-            }</div>
-          </div>
-          <div class="word-div--body">
-            <div class="word-div--definition">
-            ${this._data[0].definitions[0].definitions[0].definition}
-            </div>
-            <div class="word-div--arrow">
-              <span><img src='${icon}'/></span>
-            </div>
-          </div>
-          <div class="word-div--footer">
-            <div class="word-div--label">Synonims:</div>
-            <div class="word-div--synonims">
-            ${'none'}
-            </div>
-          </div>
-        `;
+    </div>
+  </a>`;
   }
 
   _clear() {
     this._parentElement.innerHTML = '';
   }
 
-  addHandlerShowResult() {}
+  addHandlerActivateResult(handler) {
+    this._parentElement.addEventListener('click', function (e) {
+      const wordCard = e.target.closest('.word-div--element');
+      if (!wordCard) return;
+      handler();
+    });
+  }
 }
 
 export default new RenderWord();

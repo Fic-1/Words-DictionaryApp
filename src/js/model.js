@@ -9,12 +9,17 @@ export const state = {
   rendered: true,
 };
 console.log(state);
+function uniqueID() {
+  return Math.floor(Math.random() * Date.now());
+}
 export const createWordObject = async function (wordData) {
   try {
     const data = wordData;
     return {
+      ID: uniqueID(),
       word: data.word,
       phonetic: data.phonetic,
+      audio: data.phonetics[0].audio,
       definitions: data.meanings.map(meaning => {
         return {
           partOfSpeech: meaning.partOfSpeech,
@@ -35,7 +40,7 @@ export const getWord = async function (word) {
       `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`
     );
     const [data] = await res.json();
-    console.log(data);
+    // console.log(data);
     if (!data.word) throw new Error('Unknown word');
     state.words.push(await createWordObject(data));
   } catch (error) {

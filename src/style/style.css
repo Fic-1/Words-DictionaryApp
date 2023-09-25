@@ -195,7 +195,7 @@ body {
   font-size: 28px;
   display: flex;
   flex-direction: column;
-  width: 70%;
+  width: 100%;
 }
 .word-active--part span {
   font-style: underline;
