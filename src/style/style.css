@@ -133,7 +133,16 @@ body {
 .word-div {
   grid-area: 3 / 1 / 8 / 2;
   grid-row-gap: 10px;
-  transition: transform 0.2s; /* Animation */
+  transition: transform 0.2s;
+  height: 80%;
+  overflow: scroll;
+  scrollbar-color: rgba(0, 0, 0, 0);
+  padding: 5px 5px 5px 5px;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.word-div::-webkit-scrollbar {
+  display: none;
 }
 .word-div a:visited {
   color: black;

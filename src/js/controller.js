@@ -46,12 +46,13 @@ const renderWords = async function (query) {
   try {
     await model.getWord(query);
     console.log(model.state);
+    model.state.words.filter(word => word !== undefined);
     wordView.render(model.state.words, model.state.rendered);
     model.state.rendered = false;
   } catch (error) {
     wordView.renderError('🤨 Unknown word');
     searchView.shakeDiv();
-    throw new Error(`🤨 Unknown word (${error})`);
+    console.error(`🤨 Unknown word (${error})`);
   }
 };
 
@@ -61,6 +62,7 @@ const controlResult = function () {
   if (!query) return;
   model.state.search.query = query;
   renderWords(query);
+  activeWordView.addHandlerRender(controlActive);
 };
 
 const controlActive = function () {
@@ -73,6 +75,5 @@ const controlActive = function () {
 
 const init = function () {
   searchView.addHandlerShowResult(controlResult);
-  activeWordView.addHandlerRender(controlActive);
 };
 init();

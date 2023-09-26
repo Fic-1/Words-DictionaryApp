@@ -15,7 +15,7 @@ class RenderWord {
         return this._generateMarkup(word, i);
       })
       .join('');
-    if (!(data.length <= 4)) return;
+    // if (!(data.length <= 4)) return;
     this._clear();
     this._parentElement.insertAdjacentHTML('beforeend', markup);
     this._parentElement
@@ -24,6 +24,17 @@ class RenderWord {
   }
 
   renderError(message = this._errorMessage) {
+    const removeModal = e => {
+      if (e.key !== 'Escape') return;
+      container.classList.remove('container--blur');
+      document.querySelector('.error').remove();
+      removeHandler();
+    };
+    const removeHandler = function () {
+      window.removeEventListener('keydown', removeModal);
+    };
+
+    const container = this._container;
     const markup = `<div class="error">
             <p>${message}</p>
             <span class="close--btn">X</span>
@@ -33,13 +44,14 @@ class RenderWord {
     document
       .querySelector('.close--btn')
       .addEventListener('click', function (e) {
-        console.log(e);
-        this._container.classList.remove('container--blur');
+        container.classList.remove('container--blur');
+        document.querySelector('.error').remove();
       });
+    window.addEventListener('keydown', removeModal);
   }
 
   renderSpinner(data) {
-    if (!(data.length < 4)) return;
+    // if (!(data.length < 4)) return;
     const markup = `<section class="dots-container">
     <div class="dot"></div>
     <div class="dot"></div>
