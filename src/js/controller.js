@@ -61,7 +61,6 @@ const controlResult = function () {
   if (!query) return;
   model.state.search.query = query;
   renderWords(query);
-  wordDiv.classList.remove('word-div--hidden');
 };
 
 const controlActive = function () {
