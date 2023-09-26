@@ -3,7 +3,7 @@ import icon from 'url:../../img/arrow-32.png';
 class RenderWord {
   _data;
   _parentElement = document.querySelector('.word-div');
-  _activeWord = document.querySelector('.word-active');
+  _container = document.querySelector('.container');
   _errorMessage = 'Something went wrong 😥';
   _imgElement = this._parentElement.closest('.word-div--arrow-img');
 
@@ -26,8 +26,16 @@ class RenderWord {
   renderError(message = this._errorMessage) {
     const markup = `<div class="error">
             <p>${message}</p>
+            <span class="close--btn">X</span>
           </div>`;
-    this._activeWord.insertAdjacentHTML('afterbegin', markup);
+    this._container.insertAdjacentHTML('beforebegin', markup);
+    this._container.classList.add('container--blur');
+    document
+      .querySelector('.close--btn')
+      .addEventListener('click', function (e) {
+        console.log(e);
+        this._container.classList.remove('container--blur');
+      });
   }
 
   renderSpinner(data) {

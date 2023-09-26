@@ -25,6 +25,12 @@ body {
   padding: 0rem 10rem 0rem 10rem;
 }
 
+.container--blur {
+  filter: blur(8px);
+  -webkit-filter: blur(8px);
+  transition: 0.7s;
+}
+
 .layout {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -310,20 +316,36 @@ body {
 }
 
 .error {
-  color: red;
-  z-index: 20;
   max-width: 40rem;
-  margin: 0 auto;
-  padding: 5rem 4rem;
+  margin: 0 41vw;
+  width: 30vw;
+  height: 3vw;
   display: flex;
   border-style: solid;
+  position: absolute;
+  z-index: 1000;
+  align-items: center;
+  top: 15vw;
+  border-radius: 20px;
+}
+.error span {
+  margin-left: 15px;
+  font-weight: bold;
+  float: right;
+  font-size: 15px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+  padding-right: 20px;
+  align-items: flex-start;
 }
 
 .error p {
-  margin-left: 1.5rem;
-  font-size: 1.8rem;
+  flex: 90;
+  text-align: center;
+  align-items: center;
+  font-size: 23px;
   font-weight: 600;
-  line-height: 1.5;
 }
 
 .dots-container {
