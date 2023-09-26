@@ -24,14 +24,22 @@ class RenderWord {
   }
 
   renderError(message = this._errorMessage) {
-    const removeModal = e => {
+    const removeModalEsc = e => {
       if (e.key !== 'Escape') return;
       container.classList.remove('container--blur');
-      document.querySelector('.error').remove();
-      removeHandler();
+      document.querySelector('.error')?.remove();
+      removeHandlerEsc();
     };
-    const removeHandler = function () {
-      window.removeEventListener('keydown', removeModal);
+    const removeHandlerEsc = function () {
+      window.removeEventListener('keydown', removeModalEsc);
+    };
+    const removeModalFocus = e => {
+      container.classList.remove('container--blur');
+      document.querySelector('.error')?.remove();
+      removeHandlerFocus();
+    };
+    const removeHandlerFocus = function () {
+      window.removeEventListener('keydown', removeModalEsc);
     };
 
     const container = this._container;
@@ -47,7 +55,8 @@ class RenderWord {
         container.classList.remove('container--blur');
         document.querySelector('.error').remove();
       });
-    window.addEventListener('keydown', removeModal);
+    window.addEventListener('keydown', removeModalEsc);
+    container.addEventListener('click', removeModalFocus);
   }
 
   renderSpinner(data) {
@@ -115,11 +124,6 @@ class RenderWord {
         <div class="word-div--body">
           <div class="word-div--definition">
           ${word.definitions[0].definitions[0].definition}
-          </div>
-          <div class="word-div--arrow">
-            <span
-              ><img class="arrow" src="${icon}"
-            /></span>
           </div>
         </div>
         <div class="word-div--footer">

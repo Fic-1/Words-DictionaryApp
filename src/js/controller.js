@@ -75,5 +75,6 @@ const controlActive = function () {
 
 const init = function () {
   searchView.addHandlerShowResult(controlResult);
+  searchView.addHandlerFavorites();
 };
 init();

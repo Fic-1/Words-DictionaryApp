@@ -57,6 +57,49 @@ body {
   align-items: center;
   justify-content: center;
 }
+
+.div3 {
+  grid-area: 1/3/1/4;
+  z-index: 10;
+}
+.div3 nav {
+  float: right;
+  padding-right: 2rem;
+}
+
+.added-words--flex {
+  grid-area: 2/3/2/4;
+  justify-content: flex-end;
+  position: fixed;
+  right: 9vw;
+  top: 4vw;
+  width: 30vw;
+  flex-wrap: wrap;
+  display: flex;
+  pointer-events: none;
+  transition: 2s;
+  z-index: 9999999;
+}
+
+.added-words {
+  margin-top: -9px;
+  margin-right: 27px;
+  border-style: dotted;
+  background-color: #6793fb;
+  grid-area: 2/3/2/4;
+  width: 50%;
+  text-align: center;
+}
+/* .favorites:hover + .added-words--flex {
+  opacity: 1;
+  transition: 0.5s;
+  pointer-events: all;
+} */
+
+/* .favorites:hover .added-words:hover {
+  opacity: 1;
+} */
+
 .logo {
   background-image: url('../img/logo_transparent.png');
   background-repeat: no-repeat;
@@ -67,10 +110,10 @@ body {
 }
 
 .navigation {
-  display: flex;
-  height: 100%;
-  justify-content: flex-start;
+  justify-content: flex-end;
   align-items: center;
+  height: 85%;
+  display: flex;
 }
 
 .navigation--menu {
@@ -80,9 +123,8 @@ body {
   width: 100%;
 }
 .navigation--menu li {
-  padding: 0rem 3rem 0rem 3rem;
+  padding: 3px 3rem;
   list-style-type: none;
-  padding: 1rem;
 }
 .navigation--menu li:hover {
   transition: 0.5s;
@@ -135,12 +177,13 @@ body {
   grid-area: 3 / 1 / 8 / 2;
   grid-row-gap: 10px;
   transition: transform 0.2s;
-  height: 80%;
+  height: 85%;
   overflow: scroll;
   scrollbar-color: rgba(0, 0, 0, 0);
   padding: 5px 5px 5px 5px;
   -ms-overflow-style: none;
   scrollbar-width: none;
+  padding: 10px 35px;
 }
 .word-div::-webkit-scrollbar {
   display: none;
@@ -159,6 +202,20 @@ body {
   text-decoration: none;
   transition: 1s;
   transform: scale(1.05);
+}
+
+.word-div--mini {
+  width: 100%;
+  background-color: rgb(241, 243, 250);
+  border-radius: 20px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  transition: transform 1s, opacity 1s;
+  margin-bottom: 10px;
+  margin-right: 2rem;
+  scale: 0.5;
+}
+.a-mini {
+  width: 1%;
 }
 
 .word-div--element {
@@ -299,6 +356,7 @@ body {
 .word-div--arrow {
   height: 80%;
   padding-left: 2vw;
+  float: right;
 }
 
 .word-div--arrow span img {
@@ -321,8 +379,14 @@ body {
 }
 
 .div7 {
-  width: 10rem 3rem;
-  background-color: #37383d;
+  display: flex;
+  height: 5vh;
+  width: 110%;
+  background-color: #002a38;
+  line-height: 1.3;
+  font-family: Menlo, monospace;
+  position: fixed;
+  overflow: hidden;
 }
 
 .error {

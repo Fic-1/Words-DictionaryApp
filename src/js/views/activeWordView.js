@@ -24,12 +24,14 @@ class ActiveWordView {
   }
 
   _generateMarkup() {
-    const id = window.location.hash.slice(1);
+    // const id = window.location.hash.slice(1);
     return `
     <div class="word-active--head">
             <div class="word-active--title">
             <div class="word-active--word">${this._data.word}</div>
-            <div class="word-active--phonetic">${this._data.phonetic}</div>
+            <div class="word-active--phonetic">${
+              this._data.phonetic ? this._data.phonetic : ''
+            }</div>
           </div>
           <div class="word-active--sound"><audio controls preload="auto">
             <source src=${this._data.audio} type="audio/mpeg">

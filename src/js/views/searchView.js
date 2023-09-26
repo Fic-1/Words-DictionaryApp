@@ -5,6 +5,8 @@ class SearchWord {
   _formElement = document.querySelector('.form-query');
   _parentElement = document.querySelector('.search');
   _wordDivElement = document.querySelector('.word-div');
+  _favoritesElement = document.querySelector('.added-words');
+  _favoriteBtn = document.querySelector('.favorites');
 
   getQuery() {
     const query = this._parentElement.querySelector('.search--bar').value;
@@ -27,6 +29,16 @@ class SearchWord {
       const btn = e.target.closest('.search--button');
       if (!btn) return;
       handler();
+    });
+  }
+  addHandlerFavorites() {
+    const favElem = this._favoritesElement;
+    console.log(this._favoritesElement);
+    this._favoritesElement.addEventListener('mouseover', function (e) {
+      favElem.style.display = 'flex';
+    });
+    this._favoriteBtn.addEventListener('click', function (e) {
+      favElem.classList.toggle('hidden');
     });
   }
 }
