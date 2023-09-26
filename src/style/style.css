@@ -49,6 +49,7 @@ body {
   overflow: hidden;
   z-index: 1;
   box-shadow: 6px 6px 12px #c5c5c5, -6px -6px 12px rgba(255, 255, 255, 0);
+  max-height: 85px;
 }
 .div2 {
   display: flex;

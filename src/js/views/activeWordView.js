@@ -63,7 +63,7 @@ class ActiveWordView {
           </div>
             <div class="word-active--source">Licence:
               <a href="${this._data.license.url}">${
-      thsi._data.license.name
+      this._data.license.name
     }</a></div>
           </div>
     `;
