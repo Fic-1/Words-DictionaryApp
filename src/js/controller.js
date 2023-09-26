@@ -47,6 +47,7 @@ const renderWords = async function (query) {
     await model.getWord(query);
     console.log(model.state);
     model.state.words.filter(word => word !== undefined);
+    wordView.renderSpinner(model.state.words);
     wordView.render(model.state.words, model.state.rendered);
     model.state.rendered = false;
   } catch (error) {
@@ -57,7 +58,6 @@ const renderWords = async function (query) {
 };
 
 const controlResult = function () {
-  wordView.renderSpinner(model.state.words);
   const query = searchView.getQuery();
   if (!query) return;
   model.state.search.query = query;

@@ -45,7 +45,7 @@ class ActiveWordView {
           <u>${def.partOfSpeech}</u>
           <div class="word-active--description">
           ${def.definitions
-            .map((des, i) => `${i}) ${des.definition}`)
+            .map((des, i) => `${i + 1}) ${des.definition}`)
             .join('<br>')}      
           `;
           })}  
@@ -59,10 +59,12 @@ class ActiveWordView {
             
           </div>
           <div class="word-active--footer"> <div class="word-active--source">Source:
-            <a href="https://commons.wikimedia.org/w/index.php?curid=9021827">https://commons.wikimedia.org/w/index.php?curid=9021827</a>
+            <a href="${this._data.sourceUrl}">${this._data.sourceUrl}</a>
           </div>
             <div class="word-active--source">Licence:
-              <a href="https://creativecommons.org/licenses/by/3.0/us">BY 3.0 US</a></div>
+              <a href="${this._data.license.url}">${
+      thsi._data.license.name
+    }</a></div>
           </div>
     `;
   }

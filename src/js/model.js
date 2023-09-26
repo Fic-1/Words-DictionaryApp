@@ -19,7 +19,9 @@ export const createWordObject = async function (wordData) {
       ID: uniqueID(),
       word: data.word,
       phonetic: data.phonetic,
-      audio: data.phonetics[0].audio,
+      audio: data.phonetics[0]?.audio,
+      sourceUrl: data.sourceUrls[0],
+      license: { name: data.license.name, url: data.license.url },
       definitions: data.meanings.map(meaning => {
         return {
           partOfSpeech: meaning.partOfSpeech,
@@ -40,11 +42,11 @@ export const getWord = async function (word) {
       `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`
     );
     const [data] = await res.json();
-    // console.log(data);
+    console.log(data);
     if (!data.word) throw new Error('Unknown word');
     state.words.push(await createWordObject(data));
   } catch (error) {
-    console.error(error);
-    throw new Error();
+    // console.error(`This word does not exist (${error})`);
+    throw new Error(error);
   }
 };
