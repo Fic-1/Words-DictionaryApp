@@ -3,6 +3,7 @@ import wordView from './views/wordView';
 import searchView from './views/searchView';
 import cardView from './views/activeWordView';
 import activeWordView from './views/activeWordView';
+import favoriteView from './views/favoriteView';
 
 const btnSearch = document.querySelector('.search--button');
 const searchBar = document.querySelector('.search--bar');
@@ -74,8 +75,13 @@ const controlActive = function () {
   activeWordView.render(activeWord);
 };
 
+const controlOpenFavorite = function (id) {
+  window.history.pushState(null, '', `#${id}`);
+};
+
 const init = function () {
   searchView.addHandlerShowResult(controlResult);
   searchView.addHandlerFavorites();
+  favoriteView.addHandlerOpenFavorite(controlOpenFavorite);
 };
 init();

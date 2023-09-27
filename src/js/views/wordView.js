@@ -112,7 +112,7 @@ class RenderWord {
   _generateMarkup(word, i) {
     const id = window.location.hash.slice(1);
     return `
-      <a href="#${word.ID}"><div class="word-div--element zoom ${
+      <a href="#${word.ID}"><div class="word-div--element ${
       word.ID === +id ? 'word-div--element-active' : ''
     }">
       <div class="word-div--content">

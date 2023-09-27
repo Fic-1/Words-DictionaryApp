@@ -35,7 +35,7 @@ class SearchWord {
     const favElem = this._favoritesElement;
     console.log(this._favoritesElement);
     this._favoritesElement.addEventListener('mouseover', function (e) {
-      favElem.style.display = 'flex';
+      // favElem.style.display = 'flex';
     });
     this._favoriteBtn.addEventListener('click', function (e) {
       favElem.classList.toggle('hidden');

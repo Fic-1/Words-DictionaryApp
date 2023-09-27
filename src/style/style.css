@@ -78,19 +78,35 @@ body {
   width: 30vw;
   flex-wrap: wrap;
   display: flex;
-  pointer-events: none;
   transition: 2s;
-  z-index: 9999999;
 }
 
 .added-words {
   margin-top: -9px;
-  margin-right: 27px;
-  border-style: dotted;
-  background-color: #6793fb;
+  margin-right: -15%;
   grid-area: 2/3/2/4;
   width: 50%;
   text-align: center;
+  z-index: 30;
+}
+
+.word-div--mini {
+  width: 100%;
+  background-color: rgb(241, 243, 250);
+  border-radius: 20px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  transition: transform 1s, opacity 1s;
+  margin-right: 2rem;
+  scale: 0.7;
+  cursor: pointer;
+}
+.word-div--mini:hover {
+  background-color: rgb(228, 235, 255);
+  transition: 0.5s;
+}
+
+.a-mini {
+  width: 1%;
 }
 /* .favorites:hover + .added-words--flex {
   opacity: 1;
@@ -243,20 +259,6 @@ body {
   text-decoration: none;
   transition: 1s;
   transform: scale(1.05);
-}
-
-.word-div--mini {
-  width: 100%;
-  background-color: rgb(241, 243, 250);
-  border-radius: 20px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  transition: transform 1s, opacity 1s;
-  margin-bottom: 10px;
-  margin-right: 2rem;
-  scale: 0.5;
-}
-.a-mini {
-  width: 1%;
 }
 
 .word-div--element {
