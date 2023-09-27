@@ -17,6 +17,19 @@ class ActiveWordView {
     this._clear();
     this._parentElement.insertAdjacentHTML('beforeend', markup);
   }
+
+  renderSpinner() {
+    const markup = `<section class="dots-container">
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+  </section>`;
+    this._clear();
+    this._parentElement.insertAdjacentHTML('beforeend', markup);
+  }
+
   joinArrays(array) {
     const joinedArray = array
       .flatMap(def => (def.synonyms ? def.synonyms : 'null'))

@@ -17,9 +17,11 @@ class FavoriteWords {
 
   addHandlerSavedWords(handler) {
     const favElem = this._favoritesElement;
+    const favBtn = this._favoriteBtn;
     this._favoriteBtn.addEventListener('click', function (e) {
-      handler();
       favElem.classList.toggle('hidden');
+      favBtn.classList.toggle('favorites-active');
+      handler();
     });
   }
 

@@ -42,7 +42,7 @@ const renderWords = async function (query) {
   try {
     await model.getWord(query);
     model.state.words.filter(word => word !== undefined);
-    wordView.renderSpinner(model.state.words);
+    wordView.renderSpinner();
     wordView.render(model.state.words, model.state.rendered);
     model.state.rendered = false;
   } catch (error) {
@@ -61,6 +61,7 @@ const controlResult = function () {
 };
 
 const controlActive = function () {
+  activeWordView.renderSpinner();
   wordView.render(model.state.words, model.state.rendered);
   const [activeWord] = model.state.words.filter(word => {
     return word.ID === +window.location.hash.slice(1);
