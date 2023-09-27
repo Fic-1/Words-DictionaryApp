@@ -3,6 +3,7 @@ import icon from 'url:../../img/icons8-add-50.png';
 class ActiveWordView {
   _data;
   _parentElement = document.querySelector('.word-active');
+  _wordDivActive = document.querySelector('.word-div');
 
   addHandlerRender(handler) {
     ['hashchange', 'load'].forEach(ev => window.addEventListener(ev, handler));
@@ -25,6 +26,9 @@ class ActiveWordView {
 
   _generateMarkup() {
     // const id = window.location.hash.slice(1);
+    // if (word.ID === +id)
+    //   ('word-div--element-active');
+    // }
     return `
     <div class="word-active--head">
             <div class="word-active--title">

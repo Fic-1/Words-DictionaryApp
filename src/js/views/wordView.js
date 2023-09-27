@@ -10,7 +10,6 @@ class RenderWord {
   render(data, render = true) {
     this._data = data;
     const markup = this._data
-      .reverse()
       .map((word, i) => {
         return this._generateMarkup(word, i);
       })
@@ -111,9 +110,11 @@ class RenderWord {
   }
 
   _generateMarkup(word, i) {
-    // arrowImg.src = './src/img/arrow-32.png';
+    const id = window.location.hash.slice(1);
     return `
-      <a href="#${word.ID}"><div class="word-div--element zoom">
+      <a href="#${word.ID}"><div class="word-div--element zoom ${
+      word.ID === +id ? 'word-div--element-active' : ''
+    }">
       <div class="word-div--content">
         <div class="word-div--head">
           <div class="word-div--word">${word.word}</div>

@@ -52,10 +52,12 @@ body {
   max-height: 85px;
 }
 .div2 {
-  display: flex;
   grid-area: 1 / 2 / 2 / 3;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  display: flex;
+  height: 100%;
+  width: 27vw;
 }
 
 .div3 {
@@ -107,6 +109,45 @@ body {
   scale: 1;
   height: 10vh;
   width: 10vw;
+  background-position: center;
+  background-clip: content-box;
+}
+
+@media only screen and (max-width: 1200px) {
+  .logo {
+    background-image: url('../img/logo_transparent.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    scale: 2;
+    height: 10vh;
+    width: 10vw;
+    background-position: center;
+    background-clip: content-box;
+  }
+}
+@media only screen and (max-width: 700px) {
+  .logo {
+    background-image: url('../img/logo_transparent.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    scale: 3;
+    height: 10vh;
+    width: 10vw;
+    background-position: center;
+    background-clip: content-box;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .logo {
+    background-image: url('../img/logo_transparent.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    scale: 4;
+    height: 10vh;
+    width: 10vw;
+    background-position: center;
+    background-clip: content-box;
+  }
 }
 
 .navigation {
@@ -198,7 +239,7 @@ body {
   cursor: default;
 }
 .word-div--element:hover {
-  background-color: #e2e2e2;
+  background-color: rgb(228, 235, 255);
   text-decoration: none;
   transition: 1s;
   transform: scale(1.05);
@@ -226,6 +267,10 @@ body {
   transition: transform 1s, opacity 1s;
   margin-bottom: 10px;
   margin-right: 2rem;
+}
+
+.word-div--element-active {
+  background-color: rgb(228, 235, 255);
 }
 
 .word-active {

@@ -66,6 +66,7 @@ const controlResult = function () {
 };
 
 const controlActive = function () {
+  wordView.render(model.state.words, model.state.rendered);
   const [activeWord] = model.state.words.filter(word => {
     return word.ID === +window.location.hash.slice(1);
   });

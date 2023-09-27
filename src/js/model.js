@@ -44,7 +44,7 @@ export const getWord = async function (word) {
     const [data] = await res.json();
     console.log(data);
     if (!data.word) throw new Error('Unknown word');
-    state.words.push(await createWordObject(data));
+    state.words.unshift(await createWordObject(data));
   } catch (error) {
     // console.error(`This word does not exist (${error})`);
     throw new Error(error);
