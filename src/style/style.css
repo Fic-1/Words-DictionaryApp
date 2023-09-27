@@ -141,6 +141,44 @@ body {
     background-position: center;
     background-clip: content-box;
   }
+
+  .container {
+    padding: 0;
+  }
+
+  body .word-active {
+    all: initial;
+    z-index: 100;
+    background-color: #f1f3fa;
+    border-radius: 20px;
+    flex-direction: column;
+    grid-area: 4 / 1 / 7 / 4;
+    width: 95%;
+    margin-bottom: 10px;
+    padding: 20px;
+    transition: transform 1s, opacity 1s;
+    display: flex;
+    box-shadow: 0 4px 8px #0003, 0 6px 20px #00000030;
+  }
+  body .word-div {
+    grid-row-gap: 10px;
+    scrollbar-color: #0000;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    grid-area: 3 / 1 / 4 / 4;
+    height: 85%;
+    padding: 10px 35px;
+    transition: transform 0.2s;
+    overflow: scroll;
+    display: flex;
+    flex-direction: row;
+    max-height: 19vh;
+  }
+  .word-div--element {
+    scale: 0.9;
+    max-height: 20vh;
+    overflow: hidden;
+  }
 }
 @media only screen and (max-width: 700px) {
   .logo {
