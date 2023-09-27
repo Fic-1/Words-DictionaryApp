@@ -3,7 +3,7 @@ import wordView from './views/wordView';
 import searchView from './views/searchView';
 import cardView from './views/activeWordView';
 import activeWordView from './views/activeWordView';
-import favoriteView from './views/favoriteView';
+import savedWordsView from './views/savedWordsView';
 
 const btnSearch = document.querySelector('.search--button');
 const searchBar = document.querySelector('.search--bar');
@@ -38,15 +38,9 @@ const controlRecipes = async function () {
   }
 };
 
-const findWord = function (data, id) {
-  const word = data.filter(word => word.ID === id);
-  console.log(word);
-};
-
 const renderWords = async function (query) {
   try {
     await model.getWord(query);
-    console.log(model.state);
     model.state.words.filter(word => word !== undefined);
     wordView.renderSpinner(model.state.words);
     wordView.render(model.state.words, model.state.rendered);
@@ -71,17 +65,36 @@ const controlActive = function () {
   const [activeWord] = model.state.words.filter(word => {
     return word.ID === +window.location.hash.slice(1);
   });
-  console.log(activeWord);
   activeWordView.render(activeWord);
+  model.state.activeWord = activeWord;
 };
 
-const controlOpenFavorite = function (id) {
-  window.history.pushState(null, '', `#${id}`);
+const controlActiveSave = function (id) {
+  window.history.replaceState(null, '', `#${id}`);
+  const [savedWordLink] = model.state.savedWords.filter(
+    word => word.ID === +id
+  );
+  activeWordView.render(savedWordLink);
+
+  // activeWordView.render(model.state.savedWords.filter(word => word.ID === id));
+};
+
+const controlSaveWord = function () {
+  if (!model.state.activeWord.saved) {
+    model.saveWord(model.state.activeWord);
+  } else {
+    model.deleteWord(model.state.activeWord.id);
+  }
+  activeWordView.render(model.state.activeWord);
+};
+const controlSavedWords = function () {
+  savedWordsView.render(model.state.savedWords);
 };
 
 const init = function () {
   searchView.addHandlerShowResult(controlResult);
-  searchView.addHandlerFavorites();
-  favoriteView.addHandlerOpenFavorite(controlOpenFavorite);
+  savedWordsView.addHandlerSavedWords(controlSavedWords);
+  savedWordsView.addHandlerActivateSaved(controlActiveSave);
+  activeWordView.addHandlerSaveWord(controlSaveWord);
 };
 init();

@@ -5,10 +5,10 @@ export const state = {
     results: [],
     page: 1,
   },
+  activeWord: {},
   savedWords: [],
   rendered: true,
 };
-console.log(state);
 function uniqueID() {
   return Math.floor(Math.random() * Date.now());
 }
@@ -30,10 +30,35 @@ export const createWordObject = async function (wordData) {
         };
       }),
       currentDefinition: 1,
+      saved: false,
     };
   } catch (error) {
     console.error(error);
   }
+};
+
+const presistSavedWords = function () {
+  localStorage.setItem('savedWords', JSON.stringify(state.savedWords));
+};
+
+export const saveWord = function (activeWord) {
+  //Add bookmark
+  state.savedWords.unshift(activeWord);
+
+  //Mark current recipe as bookmark
+  if (activeWord.id === state.activeWord.id) state.activeWord.saved = true;
+
+  presistSavedWords();
+};
+
+export const deleteWord = function (id) {
+  //delete bookmark
+  const index = state.savedWords.findIndex(el => el.id == id);
+  state.savedWords.splice(index, 1);
+  //Mark current recipe as not bookmark
+  if (id === state.activeWord.id) state.activeWord.saved = false;
+
+  presistSavedWords();
 };
 
 export const getWord = async function (word) {
@@ -42,11 +67,16 @@ export const getWord = async function (word) {
       `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`
     );
     const [data] = await res.json();
-    console.log(data);
+    // console.log(data);
     if (!data.word) throw new Error('Unknown word');
     state.words.unshift(await createWordObject(data));
   } catch (error) {
-    // console.error(`This word does not exist (${error})`);
     throw new Error(error);
   }
 };
+
+const init = function () {
+  const storage = localStorage.getItem('savedWords');
+  if (storage) state.savedWords = JSON.parse(storage);
+};
+init();

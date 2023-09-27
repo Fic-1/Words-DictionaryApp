@@ -1,4 +1,5 @@
-import icon from 'url:../../img/icons8-add-50.png';
+import addIcon from 'url:../../img/icons8-add-50.png';
+import removeIcon from 'url:../../img/icons8-remove-50.png';
 
 class ActiveWordView {
   _data;
@@ -24,6 +25,14 @@ class ActiveWordView {
     return joinedArray;
   }
 
+  addHandlerSaveWord(handler) {
+    this._parentElement.addEventListener('click', function (e) {
+      const btn = e.target.closest('.save-word');
+      if (!btn) return;
+      handler();
+    });
+  }
+
   _generateMarkup() {
     // const id = window.location.hash.slice(1);
     // if (word.ID === +id)
@@ -41,7 +50,9 @@ class ActiveWordView {
             <source src=${this._data.audio} type="audio/mpeg">
             Your browser does not support the audio element.
             </audio>
-            <img src="${icon}">
+            <img class="save-word" src="${
+              this._data.saved ? removeIcon : addIcon
+            }">
           </div>
           </div>
           <div class="word-active--body">

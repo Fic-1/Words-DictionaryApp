@@ -49,14 +49,14 @@ body {
   overflow: hidden;
   z-index: 1;
   box-shadow: 6px 6px 12px #c5c5c5, -6px -6px 12px rgba(255, 255, 255, 0);
-  max-height: 85px;
+  max-height: 9vh;
 }
 .div2 {
   grid-area: 1 / 2 / 2 / 3;
   justify-content: center;
   align-items: center;
   display: flex;
-  height: 100%;
+  height: 10vh;
   width: 27vw;
 }
 
@@ -72,9 +72,9 @@ body {
 .added-words--flex {
   grid-area: 2/3/2/4;
   justify-content: flex-end;
-  position: fixed;
+  position: absolute;
   right: 9vw;
-  top: 4vw;
+  top: 8vw;
   width: 30vw;
   flex-wrap: wrap;
   display: flex;
@@ -112,9 +112,9 @@ body {
   opacity: 1;
   transition: 0.5s;
   pointer-events: all;
-} */
+}
 
-/* .favorites:hover .added-words:hover {
+.favorites:hover .added-words:hover {
   opacity: 1;
 } */
 
@@ -169,14 +169,13 @@ body {
 .navigation {
   justify-content: flex-end;
   align-items: center;
-  height: 85%;
+  height: 9vh;
   display: flex;
 }
 
 .navigation--menu {
   display: inline-flex;
   flex-wrap: wrap;
-  height: 100%;
   width: 100%;
 }
 .navigation--menu li {
@@ -286,11 +285,17 @@ body {
   display: flex;
   flex-direction: column;
   padding: 20px;
+  z-index: 100;
 }
 .word-active--head {
   display: flex;
   flex-direction: row;
 }
+
+.save-word {
+  cursor: pointer;
+}
+
 .word-active--title {
   /* background-color: #b3d4fc; */
   flex: 30;
