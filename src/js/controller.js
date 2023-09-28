@@ -33,6 +33,7 @@ const controlActive = function () {
     return word.ID === +window.location.hash.slice(1);
   });
   activeWordView.render(activeWord);
+  console.log(model.state);
   model.state.activeWord = activeWord;
 };
 
@@ -42,7 +43,7 @@ const controlActiveSave = function (id) {
     word => word.ID === +id
   );
   activeWordView.render(savedWordLink);
-  model.activeWord = savedWordLink;
+  model.state.activeWord = savedWordLink;
 
   // activeWordView.render(model.state.savedWords.filter(word => word.ID === id));
 };
@@ -51,9 +52,10 @@ const controlSaveWord = function () {
   if (!model.state.activeWord.saved) {
     model.saveWord(model.state.activeWord);
   } else {
-    model.deleteWord(model.state.activeWord.id);
+    model.deleteWord(model.state.activeWord.ID);
   }
   activeWordView.render(model.state.activeWord);
+  savedWordsView.render(model.state.savedWords);
 };
 const controlSavedWords = function () {
   savedWordsView.render(model.state.savedWords);

@@ -9,6 +9,8 @@ export const state = {
   savedWords: [],
   rendered: true,
 };
+
+console.log(state);
 function uniqueID() {
   return Math.floor(Math.random() * Date.now());
 }
@@ -53,10 +55,10 @@ export const saveWord = function (activeWord) {
 
 export const deleteWord = function (id) {
   //delete bookmark
-  const index = state.savedWords.findIndex(el => el.id == id);
+  const index = state.savedWords.findIndex(el => el.ID === +id);
   state.savedWords.splice(index, 1);
   //Mark current recipe as not bookmark
-  if (id === state.activeWord.id) state.activeWord.saved = false;
+  if (+id === state.activeWord.ID) state.activeWord.saved = false;
 
   presistSavedWords();
 };
@@ -78,5 +80,6 @@ export const getWord = async function (word) {
 const init = function () {
   const storage = localStorage.getItem('savedWords');
   if (storage) state.savedWords = JSON.parse(storage);
+  state.savedWords.filter(savedWord => savedWord.length > 1);
 };
 init();

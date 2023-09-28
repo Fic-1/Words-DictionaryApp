@@ -34,7 +34,7 @@ body {
 .layout {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(2, 1fr) repeat(5, 2fr);
+  grid-template-rows: 10vh 20vh auto 100vh auto;
   grid-column-gap: 0px;
   grid-row-gap: 10px;
 }
@@ -82,12 +82,15 @@ body {
 }
 
 .added-words {
-  margin-top: -9px;
-  margin-right: -15%;
+  margin-top: 7vh;
+  margin-right: -5vw;
   grid-area: 2/3/2/4;
   width: 50%;
   text-align: center;
   z-index: 30;
+  scrollbar-color: rgba(0, 0, 0, 0);
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 .word-div--mini {
@@ -335,6 +338,10 @@ body {
 .word-div::-webkit-scrollbar {
   display: none;
 }
+.added-words::-webkit-scrollbar {
+  display: none;
+}
+
 .word-div a:visited {
   color: black;
   text-decoration: none;
@@ -639,4 +646,17 @@ span.horizontal-shake {
   100% {
     transform: translateX(0);
   }
+}
+
+.footer {
+  color: #000;
+  text-align: left;
+  background-color: #c3c3c3;
+  width: 98%;
+  margin-top: 1%;
+  padding: 15px;
+  position: relative;
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
 }

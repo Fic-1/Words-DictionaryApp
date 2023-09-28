@@ -46,7 +46,9 @@ class FavoriteWords {
     <div class="word-div--content">
       <div class="word-div--head">
         <div class="word-div--word">${word.word}</div>
-        <div class="word-div--speech">${word.phonetic}</div>
+        <div class="word-div--speech">${
+          word.phonetic ? word.phonetic : ''
+        }</div>
         <div class="word-div--arrow">
           <span
             ><img class="arrow" src="${icon}"
