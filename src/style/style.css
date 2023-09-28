@@ -132,7 +132,7 @@ body {
 
 @media only screen and (max-width: 1200px) {
   body .layout {
-    grid-template-rows: 10vh 12vh 20vh 25vh 25vh 10vh;
+    grid-template-rows: 10vh 12vh 20vh auto 50vh 10vh;
   }
 
   .logo {
@@ -185,6 +185,9 @@ body {
   }
   body .search--bar {
     width: 60%;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    font-size: small;
   }
 
   body .navigation--menu {
