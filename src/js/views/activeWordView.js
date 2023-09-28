@@ -10,9 +10,9 @@ class ActiveWordView {
     ['hashchange', 'load'].forEach(ev => window.addEventListener(ev, handler));
   }
 
-  render(data, render = true) {
+  render(data, active) {
     this._data = data;
-    const markup = this._generateMarkup();
+    const markup = this._generateMarkup(active);
     if (!markup) return;
     this._clear();
     this._parentElement.insertAdjacentHTML('beforeend', markup);
@@ -46,7 +46,7 @@ class ActiveWordView {
     });
   }
 
-  _generateMarkup() {
+  _generateMarkup(active) {
     // const id = window.location.hash.slice(1);
     // if (word.ID === +id)
     //   ('word-div--element-active');

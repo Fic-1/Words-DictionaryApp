@@ -133,7 +133,7 @@ body {
   background-clip: content-box;
 }
 
-@media only screen and (max-width: 1200px) {
+@media only screen and (max-width: 1340px) {
   body .layout {
     grid-template-rows: 10vh 12vh 20vh auto 50vh 10vh;
   }
@@ -147,6 +147,9 @@ body {
     width: 10vw;
     background-position: center;
     background-clip: content-box;
+  }
+  body .navigation--menu li {
+    scale: 1.7;
   }
 
   .container {
@@ -227,16 +230,23 @@ body {
     overflow: scroll;
   }
 }
-@media only screen and (max-width: 700px) {
+@media only screen and (max-width: 900px) {
   .logo {
     background-image: url('../img/logo_transparent.png');
     background-repeat: no-repeat;
     background-size: contain;
-    scale: 3;
-    height: 10vh;
+    scale: 4;
+    height: 2.8vh;
     width: 10vw;
     background-position: center;
     background-clip: content-box;
+  }
+
+  body .navigation--menu li {
+    margin: 0;
+    padding: 8px 1rem;
+    margin-right: 2rem;
+    scale: 1.7;
   }
 }
 @media only screen and (max-width: 600px) {
@@ -245,7 +255,7 @@ body {
     background-repeat: no-repeat;
     background-size: contain;
     scale: 4;
-    height: 10vh;
+    height: 2vh;
     width: 10vw;
     background-position: center;
     background-clip: content-box;
@@ -257,6 +267,10 @@ body {
     margin-top: 5vh;
     margin-left: 12vw;
     overflow: scroll;
+  }
+  body .navigation--menu li {
+    margin: 0px;
+    padding: 8px 0.9rem;
   }
 }
 
@@ -273,8 +287,10 @@ body {
   width: 100%;
 }
 .navigation--menu li {
-  padding: 3px 3rem;
+  margin: 3px 3rem;
+  padding: 1vh 1vw;
   list-style-type: none;
+  scale: 1.7;
 }
 .navigation--menu li:hover {
   transition: 0.5s;

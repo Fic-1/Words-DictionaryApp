@@ -8,9 +8,12 @@ const renderWords = async function (query) {
   try {
     await model.getWord(query);
     model.state.words.filter(word => word !== undefined);
+    window.history.replaceState(null, '', `#${model.state.words[0].ID}`);
     wordView.renderSpinner();
     wordView.render(model.state.words, model.state.rendered);
     model.state.rendered = false;
+    activeWordView.render(model.state.words[0]);
+    model.selectActiveWord(model.state.words[0]);
   } catch (error) {
     wordView.renderError('🤨 Unknown word');
     searchView.shakeDiv();
@@ -34,7 +37,7 @@ const controlActive = function () {
   });
   activeWordView.render(activeWord);
   console.log(model.state);
-  model.state.activeWord = activeWord;
+  model.selectActiveWord(activeWord);
 };
 
 const controlActiveSave = function (id) {
@@ -43,7 +46,8 @@ const controlActiveSave = function (id) {
     word => word.ID === +id
   );
   activeWordView.render(savedWordLink);
-  model.state.activeWord = savedWordLink;
+  model.selectActiveWord(savedWordLink);
+  wordView.render(model.state.words, model.state.rendered);
 
   // activeWordView.render(model.state.savedWords.filter(word => word.ID === id));
 };

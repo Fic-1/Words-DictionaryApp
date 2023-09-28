@@ -63,6 +63,10 @@ export const deleteWord = function (id) {
   presistSavedWords();
 };
 
+export const selectActiveWord = function (word) {
+  state.activeWord = word;
+};
+
 export const getWord = async function (word) {
   try {
     const res = await fetch(
